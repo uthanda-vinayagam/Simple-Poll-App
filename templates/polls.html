@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Polls</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-6">
+  <div class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-4">📋 All Polls</h1>
+    
+    {% if polls %}
+      <ul class="space-y-4">
+        {% for poll in polls %}
+          <li class="bg-gray-700 p-4 rounded">
+            <h2 class="text-lg font-semibold">{{ poll.question }}</h2>
+            <a href="{{ url_for('vote', poll_id=poll.id) }}" class="text-indigo-300 hover:underline">Vote Now</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-400">No polls available yet.</p>
+    {% endif %}
+    
+    <div class="mt-6">
+      <a href="{{ url_for('index') }}" class="text-indigo-300 hover:underline">➕ Create New Poll</a>
+    </div>
+  </div>
+</body>
+</html>
 
