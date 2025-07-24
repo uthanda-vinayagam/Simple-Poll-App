@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Poll</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-black text-white min-h-screen flex items-center justify-center p-6">
+  <div class="bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-xl">
+    <h1 class="text-3xl font-bold mb-6 text-center">🧠 Create a New Poll</h1>
+    
+    <form method="post" action="/create" class="space-y-4">
+      <input name="question" required placeholder="Your question..." class="w-full px-4 py-2 rounded bg-gray-700 text-white" />
+      {% for i in range(5) %}
+        <input name="option{{ i+1 }}" placeholder="Option {{ i+1 }}" class="w-full px-4 py-2 rounded bg-gray-700 text-white" />
+      {% endfor %}
+      <button type="submit" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 rounded text-white">Create Poll</button>
+    </form>
+    
+    <div class="text-center mt-6">
+      <a href="{{ url_for('view_polls') }}" class="text-indigo-400 hover:text-indigo-300 transition">📊 View All Polls</a>
+    </div>
+  </div>
+</body>
+</html>
 
